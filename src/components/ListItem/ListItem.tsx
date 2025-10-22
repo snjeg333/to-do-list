@@ -8,8 +8,8 @@ export const ListItem = ({ todo }: { todo: ToDo }) => {
         todo.isDone ? classes.done : classes.notDone
       }`}
       target="_blank"
-      href={`/app/list/${todo.id}`}
-      rel="noopener noreferrer"
+      href={`/list/${todo.id}`}
+      rel="noreferrer"
     >
       {todo.text}
     </a>
