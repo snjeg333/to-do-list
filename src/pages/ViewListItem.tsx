@@ -3,6 +3,7 @@ import { ToDo } from "../models/todo-item";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
+import { ContainrtItem } from "./ContainrtItem.styles";
 
 export const ViewListItem = () => {
   const todoList = useSelector((state: RootState) => state.todoList.todos);
@@ -19,5 +20,5 @@ export const ViewListItem = () => {
     }
   }, [todoList, id, navigate]);
 
-  return <h1 className="container">{todo?.text}</h1>;
+  return <ContainrtItem>{todo?.text}</ContainrtItem>;
 };
