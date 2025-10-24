@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { Theme } from "../../models/theme";
 
 export const StyledHeader = styled.header`
   position: fixed;
@@ -19,6 +20,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 `;
 
 export const StyledNavLink = styled(NavLink)`
@@ -29,4 +31,15 @@ export const StyledNavLink = styled(NavLink)`
   &.active {
     color: #ffffff33;
   }
+`;
+
+export const ToggleButton = styled.button<{ theme: Theme }>`
+  font-size: 25px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  background: transparent;
+  transform: translateY(-50%);
+  right: 0;
+  top: 50%;
 `;

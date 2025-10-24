@@ -1,36 +1,32 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from 'react'
+import { FormControl, FormBlock, FormField, FormLabel, FormWrapper } from './Form.styled'
 
-import { RootState } from "../../store";
-import { clearText, setText } from "../../feature/formSlice";
-import { FormControl, FormBlock, FormField, FormLabel, FormWrapper } from "./Form.styled";
 import plusIcon from '../../assets/images/plus.png'
 
 export const Form = (props: { createNewToDo: Function }) => {
-  const text = useSelector((state: RootState) => state.form.text);
-  const dispatch = useDispatch();
+    const [text, setText] = useState<string>('')
 
-  const formSubmit = (event: React.SyntheticEvent) => {
-    event.preventDefault();
-    if (text) {
-      props.createNewToDo(text);
-      dispatch(clearText());
+    const formSubmit = (event: React.SyntheticEvent) => {
+        event.preventDefault()
+
+        if (text) {
+            props.createNewToDo(text)
+            setText('')
+        }
     }
-  };
 
-  return (
-    <FormWrapper>
-      <FormBlock action="#" onSubmit={formSubmit}>
-        <FormLabel>
-          <FormField
-            value={text}
-            type="text"
-            onChange={(e) => {
-              dispatch(setText(e.target.value));
-            }}
-          />
-          <FormControl icon={plusIcon}/>
-        </FormLabel>
-      </FormBlock>
-    </FormWrapper>
-  );
-};
+    return (
+        <FormWrapper>
+            <FormBlock action="#" onSubmit={formSubmit}>
+                <FormLabel>
+                    <FormField
+                        value={text}
+                        type="text"
+                        onChange={(e) => setText(e.target.value)}
+                    />
+                    <FormControl icon={plusIcon} />
+                </FormLabel>
+            </FormBlock>
+        </FormWrapper>
+    )
+}

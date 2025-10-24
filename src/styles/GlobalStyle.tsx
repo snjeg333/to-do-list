@@ -1,15 +1,16 @@
-import { createGlobalStyle } from "styled-components";
 import normalize from "styled-normalize";
+import { Theme } from "../models/theme";
+import { createGlobalStyle } from "styled-components";
 
-export const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle<{ theme?: Theme }>`
 ${normalize}
-
 * {
     box-sizing: border-box;
 }
 
 body {
-    background-color: #edf0f1;
+    transition: background-color .2s;
+    background-color: ${({ theme }) => theme.colors.backgroundSecondary};
     padding: 50px 0 0 0;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
@@ -17,10 +18,12 @@ body {
     color: black;
 }
 
+
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 10px;
+padding-block: 50px;
 }
 `;
